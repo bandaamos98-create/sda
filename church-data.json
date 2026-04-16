@@ -1,7 +1,7 @@
 {
   "churchName": "SDA Zambia Youth",
   "location": "Seventh-day Adventist Youth • All Over Zambia",
-  "logoUrl": "https://via.placeholder.com/200/166534/ffffff?text=SDA+YOUTH",
+  "logoUrl": "images/image.png",
   
   "weeklyPrograms": [
     {
@@ -44,11 +44,6 @@
       "date": "April 6, 2026",
       "title": "Preparing for the Latter Rain",
       "pastor": "Sister Mulenga"
-    },
-    {
-      "date": "March 30, 2026",
-      "title": "The Importance of Sabbath Keeping",
-      "pastor": "Pastor Banda"
     }
   ],
 
@@ -68,6 +63,10 @@
     {
       "text": "Be strong and courageous. Do not be afraid.",
       "verse": "Joshua 1:9"
+    },
+    {
+      "text": "The Lord is my shepherd; I shall not want.",
+      "verse": "Psalm 23:1"
     }
   ]
 }
