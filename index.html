@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SDA Zambia Youth | Programs & Prayer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700&display=swap');
+        
+        :root {
+            --sda-gold: #d4af77;
+        }
+        
+        * { font-family: 'Inter', system_ui, sans-serif; }
+        .hero-font { font-family: 'Playfair Display', sans-serif; }
+
+        .nav-link:hover { color: #d4af77; transform: translateY(-1px); }
+        .program-card:hover { transform: translateY(-8px); box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1); }
+
+        .slide {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            transition: opacity 1.2s ease-in-out;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+        }
+        .slide.active { opacity: 1; }
+    </style>
+</head>
+<body class="bg-gray-50">
+
+    <!-- NAVBAR -->
+    <nav class="bg-white border-b sticky top-0 z-50 shadow-sm">
+        <div class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
+            <div class="flex items-center gap-x-3">
+                <img id="church-logo" src="" alt="SDA Youth Logo" 
+                     class="w-12 h-12 object-contain rounded-2xl border border-gray-200">
+                <div>
+                    <h1 id="church-name" class="text-2xl font-bold tracking-tight hero-font text-gray-900">SDA Zambia Youth</h1>
+                    <p id="church-location" class="text-xs text-gray-500 -mt-1">Seventh-day Adventist • All Zambia</p>
+                </div>
+            </div>
+            
+            <div class="hidden md:flex items-center gap-x-8 text-sm font-medium">
+                <a href="#programs" class="nav-link text-gray-700">Programs</a>
+                <a href="#this-week" class="nav-link text-gray-700">This Week</a>
+                <a href="#sermons" class="nav-link text-gray-700">Sermons</a>
+                <a href="#encouragement" class="nav-link text-gray-700">Encouragement</a>
+                <a href="#prayer" class="nav-link text-gray-700">Prayer Requests</a>
+            </div>
+            
+            <button onclick="toggleMobileMenu()" class="md:hidden text-3xl text-gray-700">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+            
+            <a href="#prayer" class="bg-[#d4af77] hover:bg-amber-600 text-white px-6 py-3 rounded-2xl font-semibold flex items-center gap-x-2 transition">
+                <i class="fa-solid fa-pray"></i> Submit Prayer
+            </a>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <header class="bg-gradient-to-br from-[#1e2937] to-gray-900 text-white py-24">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <h1 class="text-5xl md:text-6xl font-bold hero-font mb-6 leading-tight">
+                SDA Youth Zambia<br>
+                <span class="text-[#d4af77]">Raising a Generation for Christ</span>
+            </h1>
+            <p class="text-xl text-gray-300 mb-10">Tuesdays • Thursdays • Sundays</p>
+            
+            <a href="#programs" class="inline-flex items-center gap-x-3 bg-white text-gray-900 px-8 py-4 rounded-3xl font-semibold text-lg hover:shadow-xl transition">
+                <i class="fa-solid fa-calendar"></i> View All Programs
+            </a>
+        </div>
+    </header>
+
+    <!-- ENCOURAGEMENT SLIDESHOW -->
+    <section id="encouragement" class="py-16 bg-white">
+        <div class="max-w-5xl mx-auto px-6">
+            <div class="text-center mb-10">
+                <h2 class="text-4xl font-bold hero-font">Words of Encouragement</h2>
+                <p class="text-gray-500 mt-2">Daily Inspiration from God's Word</p>
+            </div>
+            <div id="slideshow" class="relative bg-gradient-to-br from-[#1e2937] to-gray-900 text-white min-h-[380px] rounded-3xl overflow-hidden"></div>
+        </div>
+    </section>
+
+    <!-- PROGRAMS -->
+    <section id="programs" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="text-4xl font-bold hero-font text-center mb-12">Our Weekly Programs</h2>
+            <div id="programs-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+        </div>
+    </section>
+
+    <!-- THIS WEEK -->
+    <section id="this-week" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="text-4xl font-bold hero-font text-center mb-12">This Week's Message</h2>
+            <div id="this-week-content" class="max-w-4xl mx-auto bg-white rounded-3xl shadow-xl p-10"></div>
+        </div>
+    </section>
+
+    <!-- RECENT SERMONS -->
+    <section id="sermons" class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="text-3xl font-bold hero-font text-center mb-10">Recent Sermons</h2>
+            <div id="sermons-grid" class="grid md:grid-cols-3 gap-6"></div>
+        </div>
+    </section>
+
+    <!-- PRAYER REQUEST -->
+    <section id="prayer" class="py-20 bg-gradient-to-br from-[#1e2937] to-gray-900 text-white">
+        <div class="max-w-3xl mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold hero-font mb-3">Submit Prayer Request</h2>
+                <p class="text-gray-300">Our SDA Youth Prayer Team will intercede for you</p>
+            </div>
+            
+            <form id="prayerForm" onsubmit="handlePrayerSubmit(event)" class="bg-white/10 backdrop-blur-xl rounded-3xl p-10">
+                <div class="grid md:grid-cols-2 gap-6">
+                    <input type="text" id="name" required placeholder="Your Full Name" 
+                           class="bg-white/10 border border-white/30 rounded-2xl px-6 py-4 text-white placeholder:text-gray-400 focus:outline-none">
+                    <input type="email" id="email" placeholder="Email (optional)" 
+                           class="bg-white/10 border border-white/30 rounded-2xl px-6 py-4 text-white placeholder:text-gray-400 focus:outline-none">
+                </div>
+                <textarea id="request" rows="6" required placeholder="Write your prayer request here..." 
+                          class="mt-6 w-full bg-white/10 border border-white/30 rounded-3xl px-6 py-4 text-white placeholder:text-gray-400 focus:outline-none"></textarea>
+                
+                <button type="submit" 
+                        class="mt-8 w-full bg-[#d4af77] hover:bg-amber-600 text-gray-900 font-bold py-5 rounded-3xl text-lg transition">
+                    SEND PRAYER REQUEST
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-gray-900 text-white py-12 text-center text-sm">
+        <div class="max-w-7xl mx-auto px-6">
+            © 2026 SDA Zambia Youth Program • All Rights Reserved<br><br>
+            <span class="text-[#d4af77] block">
+                Created by Amos Banda • +260 979 077 079 • bandaamos98@gmail.com<br>
+                With love for God's work ❤️
+            </span>
+        </div>
+    </footer>
+
+    <script>
+        let currentSlide = 0;
+
+        async function loadChurchData() {
+            try {
+                const response = await fetch('church-data.json');
+                const data = await response.json();
+
+                // Header
+                document.getElementById('church-logo').src = data.logoUrl || 'https://via.placeholder.com/48/166534/ffffff?text=SDA';
+                document.getElementById('church-name').textContent = data.churchName;
+                document.getElementById('church-location').textContent = data.location;
+
+                // Render sections
+                renderPrograms(data.weeklyPrograms);
+                renderThisWeek(data.thisWeekMessage);
+                renderSermons(data.recentSermons);
+                initSlideshow(data.encouragementQuotes);
+
+            } catch (error) {
+                console.error("Failed to load church-data.json", error);
+            }
+        }
+
+        function renderPrograms(programs) {
+            const container = document.getElementById('programs-grid');
+            container.innerHTML = programs.map(p => `
+                <div class="program-card bg-white rounded-3xl p-8 shadow">
+                    <div class="text-5xl mb-6">${p.emoji}</div>
+                    <h3 class="text-2xl font-bold mb-1">${p.title}</h3>
+                    <p class="text-emerald-600 font-medium">${p.day} • ${p.time}</p>
+                    <p class="text-gray-600 mt-4">${p.description}</p>
+                </div>
+            `).join('');
+        }
+
+        function renderThisWeek(tw) {
+            document.getElementById('this-week-content').innerHTML = `
+                <h3 class="text-3xl font-bold mb-3">"${tw.title}"</h3>
+                <p class="text-[#d4af77] mb-6">${tw.pastor} • ${tw.verse}</p>
+                <p class="text-gray-600 leading-relaxed">${tw.summary}</p>
+            `;
+        }
+
+        function renderSermons(sermons) {
+            document.getElementById('sermons-grid').innerHTML = sermons.map(s => `
+                <div class="bg-white p-6 rounded-3xl shadow-sm">
+                    <p class="text-xs text-gray-400">${s.date}</p>
+                    <p class="font-semibold text-lg mt-2">${s.title}</p>
+                    <p class="text-sm text-gray-500">${s.pastor}</p>
+                </div>
+            `).join('');
+        }
+
+        function initSlideshow(quotes) {
+            const container = document.getElementById('slideshow');
+            container.innerHTML = quotes.map((q, i) => `
+                <div class="slide ${i === 0 ? 'active' : ''}">
+                    <div class="max-w-2xl">
+                        <p class="text-3xl md:text-4xl leading-tight">"${q.text}"</p>
+                        <p class="mt-8 text-[#d4af77] text-xl">${q.verse}</p>
+                    </div>
+                </div>
+            `).join('');
+
+            setInterval(() => {
+                const slides = document.querySelectorAll('.slide');
+                slides[currentSlide].classList.remove('active');
+                currentSlide = (currentSlide + 1) % quotes.length;
+                slides[currentSlide].classList.add('active');
+            }, 6000);
+        }
+
+        function handlePrayerSubmit(e) {
+            e.preventDefault();
+            alert("✅ Thank you! Your prayer request has been received. Our SDA Youth Prayer Team will pray for you.");
+            e.target.reset();
+        }
+
+        function toggleMobileMenu() {
+            alert("Mobile menu coming soon...");
+        }
+
+        // Load everything
+        window.onload = loadChurchData;
+    </script>
+</body>
+</html>
