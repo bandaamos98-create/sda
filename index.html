@@ -9,9 +9,7 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700&display=swap');
         
-        :root {
-            --sda-gold: #d4af77;
-        }
+        :root { --sda-gold: #d4af77; }
         
         * { font-family: 'Inter', system_ui, sans-serif; }
         .hero-font { font-family: 'Playfair Display', sans-serif; }
@@ -39,7 +37,7 @@
     <nav class="bg-white border-b sticky top-0 z-50 shadow-sm">
         <div class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
             <div class="flex items-center gap-x-3">
-                <img id="church-logo" src="" alt="SDA Youth Logo" 
+                <img id="church-logo" src="images/image.png" alt="SDA Youth Logo" 
                      class="w-12 h-12 object-contain rounded-2xl border border-gray-200">
                 <div>
                     <h1 id="church-name" class="text-2xl font-bold tracking-tight hero-font text-gray-900">SDA Zambia Youth</h1>
@@ -85,7 +83,7 @@
         <div class="max-w-5xl mx-auto px-6">
             <div class="text-center mb-10">
                 <h2 class="text-4xl font-bold hero-font">Words of Encouragement</h2>
-                <p class="text-gray-500 mt-2">Daily Inspiration from God's Word</p>
+                <p class="text-gray-500 mt-2">Bible Verses for SDA Youth</p>
             </div>
             <div id="slideshow" class="relative bg-gradient-to-br from-[#1e2937] to-gray-900 text-white min-h-[380px] rounded-3xl overflow-hidden"></div>
         </div>
@@ -126,12 +124,12 @@
             <form id="prayerForm" onsubmit="handlePrayerSubmit(event)" class="bg-white/10 backdrop-blur-xl rounded-3xl p-10">
                 <div class="grid md:grid-cols-2 gap-6">
                     <input type="text" id="name" required placeholder="Your Full Name" 
-                           class="bg-white/10 border border-white/30 rounded-2xl px-6 py-4 text-white placeholder:text-gray-400 focus:outline-none">
+                           class="bg-white/10 border border-white/30 rounded-2xl px-6 py-4 text-white placeholder:text-gray-400">
                     <input type="email" id="email" placeholder="Email (optional)" 
-                           class="bg-white/10 border border-white/30 rounded-2xl px-6 py-4 text-white placeholder:text-gray-400 focus:outline-none">
+                           class="bg-white/10 border border-white/30 rounded-2xl px-6 py-4 text-white placeholder:text-gray-400">
                 </div>
                 <textarea id="request" rows="6" required placeholder="Write your prayer request here..." 
-                          class="mt-6 w-full bg-white/10 border border-white/30 rounded-3xl px-6 py-4 text-white placeholder:text-gray-400 focus:outline-none"></textarea>
+                          class="mt-6 w-full bg-white/10 border border-white/30 rounded-3xl px-6 py-4 text-white placeholder:text-gray-400"></textarea>
                 
                 <button type="submit" 
                         class="mt-8 w-full bg-[#d4af77] hover:bg-amber-600 text-gray-900 font-bold py-5 rounded-3xl text-lg transition">
@@ -160,19 +158,19 @@
                 const response = await fetch('church-data.json');
                 const data = await response.json();
 
-                // Header
-                document.getElementById('church-logo').src = data.logoUrl || 'https://via.placeholder.com/48/166534/ffffff?text=SDA';
+                // Logo from images folder
+                document.getElementById('church-logo').src = data.logoUrl || 'images/image.png';
+
                 document.getElementById('church-name').textContent = data.churchName;
                 document.getElementById('church-location').textContent = data.location;
 
-                // Render sections
                 renderPrograms(data.weeklyPrograms);
                 renderThisWeek(data.thisWeekMessage);
                 renderSermons(data.recentSermons);
                 initSlideshow(data.encouragementQuotes);
 
             } catch (error) {
-                console.error("Failed to load church-data.json", error);
+                console.error("Error loading church-data.json", error);
             }
         }
 
@@ -210,7 +208,7 @@
             const container = document.getElementById('slideshow');
             container.innerHTML = quotes.map((q, i) => `
                 <div class="slide ${i === 0 ? 'active' : ''}">
-                    <div class="max-w-2xl">
+                    <div class="max-w-2xl px-6">
                         <p class="text-3xl md:text-4xl leading-tight">"${q.text}"</p>
                         <p class="mt-8 text-[#d4af77] text-xl">${q.verse}</p>
                     </div>
@@ -227,7 +225,7 @@
 
         function handlePrayerSubmit(e) {
             e.preventDefault();
-            alert("✅ Thank you! Your prayer request has been received. Our SDA Youth Prayer Team will pray for you.");
+            alert("✅ Thank you! Your prayer request has been received.");
             e.target.reset();
         }
 
@@ -235,7 +233,6 @@
             alert("Mobile menu coming soon...");
         }
 
-        // Load everything
         window.onload = loadChurchData;
     </script>
 </body>
