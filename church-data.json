@@ -1,0 +1,73 @@
+{
+  "churchName": "SDA Zambia Youth",
+  "location": "Seventh-day Adventist Youth • All Over Zambia",
+  "logoUrl": "https://via.placeholder.com/200/166534/ffffff?text=SDA+YOUTH",
+  
+  "weeklyPrograms": [
+    {
+      "title": "Tuesday Prayer & Fellowship",
+      "day": "Tuesday",
+      "time": "18:00",
+      "emoji": "🙏",
+      "description": "Powerful intercessory prayer meeting for all youth across Zambia"
+    },
+    {
+      "title": "Thursday Bible Study",
+      "day": "Thursday",
+      "time": "18:30",
+      "emoji": "📖",
+      "description": "Deep study of the Bible and Spirit of Prophecy"
+    },
+    {
+      "title": "Sunday Youth Service",
+      "day": "Sunday",
+      "time": "09:00 AM",
+      "emoji": "🙌",
+      "description": "Main Youth Worship, Preaching & Fellowship"
+    }
+  ],
+
+  "thisWeekMessage": {
+    "title": "Faith That Works",
+    "pastor": "Youth Pastor Mwansa",
+    "verse": "James 2:26",
+    "summary": "This week we explored how genuine faith must be accompanied by works. As SDA Youth, we are called to live out our beliefs in these last days."
+  },
+
+  "recentSermons": [
+    {
+      "date": "April 13, 2026",
+      "title": "The Sanctuary Message",
+      "pastor": "Youth Leader Chanda"
+    },
+    {
+      "date": "April 6, 2026",
+      "title": "Preparing for the Latter Rain",
+      "pastor": "Sister Mulenga"
+    },
+    {
+      "date": "March 30, 2026",
+      "title": "The Importance of Sabbath Keeping",
+      "pastor": "Pastor Banda"
+    }
+  ],
+
+  "encouragementQuotes": [
+    {
+      "text": "I can do all things through Christ who strengthens me.",
+      "verse": "Philippians 4:13"
+    },
+    {
+      "text": "Remember the Sabbath day, to keep it holy.",
+      "verse": "Exodus 20:8"
+    },
+    {
+      "text": "Let your light so shine before men, that they may see your good works.",
+      "verse": "Matthew 5:16"
+    },
+    {
+      "text": "Be strong and courageous. Do not be afraid.",
+      "verse": "Joshua 1:9"
+    }
+  ]
+}
